@@ -48,3 +48,45 @@ function initAccordion() {
 }
 
 initAccordion();
+
+
+
+function initScrollSuave() {
+
+    const linksInternos = document.querySelectorAll ('js-menu a[href^="#"]');
+
+    function scrollToSection(event) {
+        event.preventDefaut();
+        const href = event.currentTarget.getAttribute('href');
+        const section = document.querySelector(href);
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        })
+
+    // uma outra forma alternativa seria:
+    //const topo = section.offsetTop;
+    //window.scrollTo({
+    //  top: topo,
+    //  behavior: 'smooth',
+    //});
+
+
+    }
+
+
+    linksInternos.forEach((link) => {
+        link.addEventListener('click', scrollToSection);
+    });
+
+}
+
+initScrollSuave();
+
+const section = document.querySelectorAll('js-scroll');
+
+function animaScroll(){
+    console.log('sim');
+}
+
+window.addEventListener('scroll', animaScroll);
